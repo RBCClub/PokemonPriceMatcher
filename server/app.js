@@ -38,6 +38,7 @@ app.get("/search", async (req, res) => {
 
     const database = client.db(process.env.DB_NAME);
     const cards = database.collection('cards');
+    const hashes = database.collection('imghash');
 
     if(!('text' in params) || params.text.length == 0) {
         res.send({error: "true", messsage: "Incomplete search information"});
@@ -61,8 +62,8 @@ app.get("/search", async (req, res) => {
             res.send({error: "false", payload: searchResults});
             break;
         case 'cardImage':
-            console.log('cardImage');
-            res.send({error: "false", payload: "No search function yet"});
+            const resultCards = await searchLib.searchImage(hashes, cards, params.text);
+            res.send({error: "false", payload: resultCards});
             break;
         case 'cardTextAdvanced':
             console.log('cardTextAdvanced');
