@@ -3,11 +3,13 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
+const cors = require('cors');
 const searchLib = require('./lib/search.js');
 
 const uri = `mongodb://localhost:27017`;
 const client = new MongoClient(uri);
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -76,6 +78,6 @@ app.get("/search", async (req, res) => {
 
 })
 
-app.listen(3000, (err) => {
+app.listen(5000, (err) => {
     console.log(err);
 })
