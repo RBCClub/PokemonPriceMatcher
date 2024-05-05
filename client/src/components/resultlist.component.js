@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 function ResultList(props) {
@@ -23,8 +24,13 @@ function ResultList(props) {
                                     <Card.Img variant="top" src={item.images.small}/>
                                     <Card.Body>
                                         <Card.Title>{item.name}</Card.Title>
-                                        <Card.Text>HP: {item.hp}</Card.Text>
-                                        <Button variant="primary">See Prices</Button>
+                                    </Card.Body>
+                                    <ListGroup className="list-group-flush">
+                                        <ListGroup.Item>HP: {item.hp}</ListGroup.Item>
+                                    </ListGroup>
+                                    <Card.Body>
+                                        <Card.Link href="#">See Prices</Card.Link>
+                                        <Card.Link href="#">Detailed View</Card.Link>
                                     </Card.Body>
                                 </Card>
                             </Col>
