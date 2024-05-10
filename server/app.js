@@ -6,7 +6,7 @@ const { MongoClient } = require('mongodb');
 const cors = require('cors');
 const searchLib = require('./lib/search.js');
 
-const uri = `mongodb://localhost:27017`;
+const uri = process.env.DB_URL;
 const client = new MongoClient(uri);
 
 app.use(cors());
